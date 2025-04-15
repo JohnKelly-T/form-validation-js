@@ -3,6 +3,8 @@ let email = document.querySelector('#email');
 let emailError = document.querySelector('#email-error');
 let country = document.querySelector('#country');
 let countryError = document.querySelector('#country-error');
+let postalCode = document.querySelector('#postal-code');
+let postalCodeError = document.querySelector('#postal-code-error');
 
 let validateEmail = () => {
     // regex for validations
@@ -40,17 +42,56 @@ let validateCountry = () => {
     }
 };
 
-email.addEventListener("change", (e) => {
-    validateEmail();
-});
+let validatePostalCode = () => {
+    const constraints = {
+        ph: [
+            "^\d{4}$",
+            "Philippine postal codes must have exactly 4 digits: e.g. 4114"
+        ],
+        ch: [
+          "^(CH-)?\\d{4}$",
+          "Swiss postal codes must have exactly 4 digits: e.g. CH-1950 or 1950",
+        ],
+        fr: [
+          "^(F-)?\\d{5}$",
+          "French postal codes must have exactly 5 digits: e.g. F-75012 or 75012",
+        ],
+        de: [
+          "^(D-)?\\d{5}$",
+          "German postal codes must have exactly 5 digits: e.g. D-12345 or 12345",
+        ],
+        nl: [
+          "^(NL-)?\\d{4}\\s*([A-RT-Z][A-Z]|S[BCE-RT-Z])$",
+          "Dutch postal codes must have exactly 4 digits, followed by 2 letters except SA, SD and SS",
+        ],
+    };
 
-country.addEventListener("change", (e) => {
-    validateCountry();
-});
+    if (postalCode.value === "") {
+        postalCodeError.textContent = "Please enter a postal code";
+        postalCode.classList.add("invalid");
+    } else {
+        if (country.value) {
+            const constraint = new RegExp(constraints[country.value][0]);
+
+            if (!constraint.test(postalCode.value)) {
+                postalCodeError.textContent = constraints[country.value][1];
+                postalCode.classList.add("invalid");
+            }
+        }
+
+        // postalCodeError.textContent = "";
+        // postalCode.classList.remove("invalid");
+    }
+};
+
+email.addEventListener("change", validateEmail);
+country.addEventListener("change", validateCountry);
+postalCode.addEventListener("change", validatePostalCode);
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     validateEmail();
     validateCountry();
+    validatePostalCode();
 });
