@@ -5,6 +5,8 @@ let country = document.querySelector('#country');
 let countryError = document.querySelector('#country-error');
 let postalCode = document.querySelector('#postal-code');
 let postalCodeError = document.querySelector('#postal-code-error');
+let password = document.querySelector('#password');
+let passwordError = document.querySelector('#password-error');
 
 let validateEmail = () => {
     // regex for validations
@@ -81,6 +83,28 @@ let validatePostalCode = () => {
     }
 };
 
+let validatePassword = () => {
+    // regex for password
+    const hasMoreThan8Chars = /^.{8,}$/;
+    const hasUppercase = /^.*[A-Z].*$/;
+    const hasLowercase = /^.*[a-z].*$/;
+    const hasSpecialChar = /^.*[^\w\d].*$/; 
+
+    if (!hasMoreThan8Chars.test(password.value)) {
+        passwordError.textContent = "The password must have at least 8 characters";
+        password.classList.add("invalid");
+    } else if (!hasUppercase.test(password.value)) {
+        passwordError.textContent = "The password must have at least 1 uppercase character";
+    } else if (!hasLowercase.test(password.value)) {
+        passwordError.textContent = "The password must have at least 1 lowercase character";
+    } else if (!hasSpecialChar.test(password.value)) {
+        passwordError.textContent = "The password must have at least 1 specialcharacter";
+    } else {
+        passwordError.textContent = "";
+        password.classList.remove("invalid");
+    }
+}
+
 email.addEventListener("change", validateEmail);
 country.addEventListener("change", validateCountry);
 postalCode.addEventListener("change", validatePostalCode);
@@ -91,4 +115,5 @@ form.addEventListener("submit", (e) => {
     validateEmail();
     validateCountry();
     validatePostalCode();
+    validatePassword();
 });
