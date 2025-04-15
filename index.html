@@ -8,5 +8,33 @@
     <link rel="stylesheet" href="./styles.css" />
     <script src="./script.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <form novalidate>
+      <input type="email" name="email" id="email" placeholder="Email" />
+
+      <select name="Country" id="country">
+        <option value="" selected disabled>Country</option>
+      </select>
+
+      <input
+        type="text"
+        name="postal-code"
+        id="postal-code"
+        placeholder="Postal Code" />
+
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="Password" />
+
+      <input
+        type="password"
+        name="confirm-password"
+        id="confirm-password"
+        placeholder="Confirm Password" />
+
+      <button type="submit">Sign up</button>
+    </form>
+  </body>
 </html>
