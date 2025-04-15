@@ -1,6 +1,8 @@
 let form = document.querySelector('form');
 let email = document.querySelector('#email');
 let emailError = document.querySelector('#email-error');
+let country = document.querySelector('#country');
+let countryError = document.querySelector('#country-error');
 
 let validateEmail = () => {
     // regex for validations
@@ -28,12 +30,27 @@ let validateEmail = () => {
     console.log(hasPartAfterAt.test(email.value));
 };
 
+let validateCountry = () => {
+    if (country.value === "") {
+        country.classList.add("invalid");
+        countryError.textContent = "Please select a country";
+    } else {
+        country.classList.remove("invalid");
+        countryError.textContent = "";
+    }
+};
+
 email.addEventListener("change", (e) => {
     validateEmail();
+});
+
+country.addEventListener("change", (e) => {
+    validateCountry();
 });
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
     validateEmail();
+    validateCountry();
 });
