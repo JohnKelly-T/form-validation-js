@@ -108,6 +108,7 @@ let validatePassword = () => {
 email.addEventListener("change", validateEmail);
 country.addEventListener("change", validateCountry);
 postalCode.addEventListener("change", validatePostalCode);
+password.addEventListener("change", validatePassword);
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
