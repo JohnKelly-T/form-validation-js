@@ -78,9 +78,6 @@ let validatePostalCode = () => {
                 postalCode.classList.add("invalid");
             }
         }
-
-        // postalCodeError.textContent = "";
-        // postalCode.classList.remove("invalid");
     }
 };
 
