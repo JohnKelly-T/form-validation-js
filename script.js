@@ -127,10 +127,10 @@ let validateConfirmPassword = () => {
     }
 }
 
-email.addEventListener("change", validateEmail);
-country.addEventListener("change", validateCountry);
-postalCode.addEventListener("change", validatePostalCode);
-password.addEventListener("change", validatePassword);
+email.addEventListener("input", validateEmail);
+country.addEventListener("input", validateCountry);
+postalCode.addEventListener("input", validatePostalCode);
+password.addEventListener("input", validatePassword);
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
