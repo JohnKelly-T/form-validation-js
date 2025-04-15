@@ -71,6 +71,7 @@ input, select {
   padding: 0 1rem;
   border: 1px solid lightgray;
   border-radius: 3px;
+  transition: all 200ms ease;
 }
 
 select {
