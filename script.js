@@ -49,7 +49,7 @@ let validateCountry = () => {
 let validatePostalCode = () => {
     const constraints = {
         ph: [
-            "^\d{4}$",
+            "^\\d{4}$",
             "Philippine postal codes must have exactly 4 digits: e.g. 4114"
         ],
         ch: [
@@ -80,6 +80,9 @@ let validatePostalCode = () => {
             if (!constraint.test(postalCode.value)) {
                 postalCodeError.textContent = constraints[country.value][1];
                 postalCode.classList.add("invalid");
+            } else {
+                postalCodeError.textContent = "";
+                postalCode.classList.remove("invalid");
             }
         }
     }
