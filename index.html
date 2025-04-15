@@ -17,9 +17,13 @@
         placeholder="Email"
         required />
 
+      <div class="error-message" id="email-error"></div>
+
       <select name="Country" id="country" required>
         <option value="" selected disabled>Country</option>
       </select>
+
+      <div class="error-message" id="country-error"></div>
 
       <input
         type="text"
@@ -28,6 +32,8 @@
         placeholder="Postal Code"
         required />
 
+      <div class="error-message" id="postal-code-error"></div>
+
       <input
         type="password"
         name="password"
@@ -35,12 +41,16 @@
         placeholder="Password"
         required />
 
+      <div class="error-message" id="password-error"></div>
+
       <input
         type="password"
         name="confirm-password"
         id="confirm-password"
         placeholder="Confirm Password"
         required />
+
+      <div class="error-message" id="confirm-password-error"></div>
 
       <button type="submit">Sign up</button>
     </form>
