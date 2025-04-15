@@ -55,7 +55,6 @@ body {
 form {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
   width: 400px;
   padding: 2rem;
   background: white;
@@ -84,6 +83,11 @@ input:focus-visible, select:focus-visible {
   border: 1px solid gray;
 }
 
+input.invalid {
+  background: #ff172a1d;
+  border: 1px solid #ff172a;
+}
+
 button {
   border: none;
   border-radius: 3px;
@@ -96,4 +100,12 @@ button {
 
 button:hover {
   filter: brightness(120%);
+}
+
+.error-message {
+  color: #ff1c59;
+  margin-bottom: 1.2rem;
+  height: 0.8rem;
+  font-size: 0.8rem;
+  font-style: italic;
 }
