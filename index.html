@@ -10,9 +10,14 @@
   </head>
   <body>
     <form novalidate>
-      <input type="email" name="email" id="email" placeholder="Email" />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Email"
+        required />
 
-      <select name="Country" id="country">
+      <select name="Country" id="country" required>
         <option value="" selected disabled>Country</option>
       </select>
 
@@ -20,19 +25,22 @@
         type="text"
         name="postal-code"
         id="postal-code"
-        placeholder="Postal Code" />
+        placeholder="Postal Code"
+        required />
 
       <input
         type="password"
         name="password"
         id="password"
-        placeholder="Password" />
+        placeholder="Password"
+        required />
 
       <input
         type="password"
         name="confirm-password"
         id="confirm-password"
-        placeholder="Confirm Password" />
+        placeholder="Confirm Password"
+        required />
 
       <button type="submit">Sign up</button>
     </form>
