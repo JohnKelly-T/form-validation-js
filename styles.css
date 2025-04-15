@@ -83,7 +83,7 @@ input:focus-visible, select:focus-visible {
   border: 1px solid gray;
 }
 
-input.invalid {
+input.invalid, select.invalid {
   background: #ff172a1d;
   border: 1px solid #ff172a;
 }
