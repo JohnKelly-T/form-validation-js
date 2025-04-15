@@ -7,6 +7,8 @@ let postalCode = document.querySelector('#postal-code');
 let postalCodeError = document.querySelector('#postal-code-error');
 let password = document.querySelector('#password');
 let passwordError = document.querySelector('#password-error');
+let confirmPassword = document.querySelector('#confirm-password');
+let confirmPasswordError = document.querySelector('#confirm-password-error');
 
 let validateEmail = () => {
     // regex for validations
@@ -86,6 +88,7 @@ let validatePostalCode = () => {
 let validatePassword = () => {
     // regex for password
     const hasMoreThan8Chars = /^.{8,}$/;
+    const hasDigit = /^.*\d.*$/;
     const hasUppercase = /^.*[A-Z].*$/;
     const hasLowercase = /^.*[a-z].*$/;
     const hasSpecialChar = /^.*[^\w\d].*$/; 
@@ -93,15 +96,31 @@ let validatePassword = () => {
     if (!hasMoreThan8Chars.test(password.value)) {
         passwordError.textContent = "The password must have at least 8 characters";
         password.classList.add("invalid");
+    } else if (!hasDigit.test(password.value)) {
+        passwordError.textContent = "The password must have at least 1 digit";
+        password.classList.add("invalid");
     } else if (!hasUppercase.test(password.value)) {
         passwordError.textContent = "The password must have at least 1 uppercase character";
+        password.classList.add("invalid");
     } else if (!hasLowercase.test(password.value)) {
         passwordError.textContent = "The password must have at least 1 lowercase character";
+        password.classList.add("invalid");
     } else if (!hasSpecialChar.test(password.value)) {
-        passwordError.textContent = "The password must have at least 1 specialcharacter";
+        passwordError.textContent = "The password must have at least 1 special character";
+        password.classList.add("invalid");
     } else {
         passwordError.textContent = "";
         password.classList.remove("invalid");
+    }
+}
+
+let validateConfirmPassword = () => {
+    if (password.value != confirmPassword.value) {
+        confirmPasswordError.textContent = "Passwords do not match";
+        confirmPassword.classList.add("invalid");
+    } else {
+        confirmPasswordError.textContent = "";
+        confirmPassword.classList.remove("invalid");
     }
 }
 
@@ -117,4 +136,5 @@ form.addEventListener("submit", (e) => {
     validateCountry();
     validatePostalCode();
     validatePassword();
+    validateConfirmPassword();
 });
